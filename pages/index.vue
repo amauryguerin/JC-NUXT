@@ -3,7 +3,7 @@
     <NuxtLink to="/projects/mon-premier-projet">Page projet</NuxtLink>
     <AppInfo>Composant auto importé depuis page 1</AppInfo>
     <div class="image">
-        <NuxtImg src="zoomer.png" alt="zoomer" />
+        <NuxtImg src="/zoomer.png" alt="zoomer" />
     </div>
     <CountButton></CountButton>
     <p></p>
