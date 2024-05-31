@@ -1,5 +1,5 @@
 <template>
-    <p>Page 1</p>
+    <p>Ici la version staging, WHATS HAPPENING</p>
     <NuxtLink to="/projects/mon-premier-projet">Page projet</NuxtLink>
     <AppInfo>Composant auto importé depuis page 1</AppInfo>
     <div class="image">
@@ -14,4 +14,5 @@
 import getAllProjects from '~/api/queries/allProjects.js';
 
 const { data: projectsData, pending: projectsPending, error: projectsError } = await useLazyAsyncQuery(getAllProjects);
+console.log(projectsData);
 </script>
