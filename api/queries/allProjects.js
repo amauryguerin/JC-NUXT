@@ -8,10 +8,12 @@ export default gql`
       projectVideo {
         url
         alt
+        id
       }
       projectPhoto {
         alt
         url
+        id
       }
       seoMetadata {
         description

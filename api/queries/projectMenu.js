@@ -12,6 +12,7 @@ export default gql`
       projectThumbnail {
         alt
         url
+        id
       }
     }
   }
