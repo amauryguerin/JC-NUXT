@@ -1,8 +1,8 @@
 <template>
     <Html lang="fr">
+    <SiteHeader v-if="!siteHeaderPending" :siteHeaderData="siteHeaderData" :siteHeaderPending="siteHeaderPending"
+        :siteHeaderError="siteHeaderError" />
     <main>
-        <SiteHeader :siteHeaderData="siteHeaderData" :siteHeaderPending="siteHeaderPending"
-            :siteHeaderError="siteHeaderError" />
         <NuxtPage />
     </main>
 

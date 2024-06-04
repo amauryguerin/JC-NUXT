@@ -1,6 +1,8 @@
 <template>
-    <ProjectMenu :projectMenuData="projectMenuData" :projectMenuPending="projectMenuPending"
-        :projectMenuError="projectMenuError" />
+    <div v-if="!projectMenuPending">
+        <ProjectMenu :projectMenuData="projectMenuData" :projectMenuPending="projectMenuPending"
+            :projectMenuError="projectMenuError" />
+    </div>
 </template>
 
 <script setup>

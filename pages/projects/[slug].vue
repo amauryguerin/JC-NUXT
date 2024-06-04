@@ -1,9 +1,11 @@
 <template>
-    <h2>
-        {{ projectSingleData.project.projectTitle }}
-    </h2>
-    <ProjectCarousel :projectSingleData="projectSingleData" :projectSinglePending="projectSinglePending"
-        :projectSingleError="projectSingleError" />
+    <div v-if="!projectSinglePending">
+        <h2>
+            {{ projectSingleData.project.projectTitle }}
+        </h2>
+        <ProjectCarousel :projectSingleData="projectSingleData" :projectSinglePending="projectSinglePending"
+            :projectSingleError="projectSingleError" />
+    </div>
 </template>
 
 <script setup>
