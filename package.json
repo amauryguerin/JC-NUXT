@@ -16,7 +16,8 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.27",
     "vue-datocms": "^6.0.2",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vue3-carousel-nuxt": "^1.1.1"
   },
   "devDependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.14",

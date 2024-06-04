@@ -1,20 +1,14 @@
 <template>
-    <div v-if="!projectSinglePending">
-        <div>
-            <h1>
-                {{ projectSingle.project.projectTitle }}
-            </h1>
-            <p>
-                {{ projectSingle.project.projectContent }}
-            </p>
-            <div v-html="projectSingle.project.projectContent"></div>
-        </div>
-    </div>
+    <h2>
+        {{ projectSingleData.project.projectTitle }}
+    </h2>
+    <ProjectCarousel :projectSingleData="projectSingleData" :projectSinglePending="projectSinglePending"
+        :projectSingleError="projectSingleError" />
 </template>
 
 <script setup>
 import projectBySlug from '@/api/queries/projectBySlug'
 
 const route = useRoute()
-const { data: projectSingle, pending: projectSinglePending, error: projectSingleError } = await useLazyAsyncQuery(projectBySlug, { slug: route.params.slug })
+const { data: projectSingleData, pending: projectSinglePending, error: projectSingleError } = await useLazyAsyncQuery(projectBySlug, { slug: route.params.slug })
 </script>

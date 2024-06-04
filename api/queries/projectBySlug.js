@@ -3,10 +3,21 @@ export default gql`
     project(filter: { projectSlug: { eq: $slug } }) {
       id
       projectTitle
-      _status
-      _firstPublishedAt
-      projectSlug
       projectContent(markdown: true)
+      projectSlug
+      projectVideo {
+        url
+        alt
+      }
+      projectPhoto {
+        alt
+        url
+      }
+      seoMetadata {
+        description
+        twitterCard
+        title
+      }
     }
   }
 `;

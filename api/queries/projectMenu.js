@@ -1,22 +1,17 @@
 export default gql`
-  query allProjects {
+  query projectMenu {
     allProjects {
       id
       projectTitle
-      projectContent(markdown: true)
       projectSlug
-      projectVideo {
-        url
-        alt
-      }
-      projectPhoto {
-        alt
-        url
-      }
       seoMetadata {
         description
         twitterCard
         title
+      }
+      projectThumbnail {
+        alt
+        url
       }
     }
   }
