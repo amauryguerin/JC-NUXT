@@ -1,5 +1,5 @@
 <template>
-    <video width="100%" height="auto" muted controls>
+    <video width="100%" height="auto" autoplay muted controls>
         <source :src="projectSingleData.project.projectVideo.url" />
         Your browser does not support the video tag.
     </video>
