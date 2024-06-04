@@ -26,6 +26,13 @@ export default defineNuxtConfig({
 		}
 	},
 	image: {
+		providers: {
+			myProvider: {
+				name: 'datocms',
+				provider: '~/providers/datocms.ts',
+			}
+		},
+		provider: 'datocms',
 		domains: ['datocms-assets.com']
 	}
 })
