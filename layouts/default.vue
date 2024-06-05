@@ -9,7 +9,7 @@
     </Html>
 </template>
 <script setup>
-
 import getSiteHeader from '~/api/queries/siteHeader.js';
 const { data: siteHeaderData, pending: siteHeaderPending, error: siteHeaderError } = await useLazyAsyncQuery(getSiteHeader);
+
 </script>
