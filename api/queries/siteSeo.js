@@ -21,7 +21,6 @@ export default gql`
         description
         twitterCard
         image {
-          id
           url
         }
       }

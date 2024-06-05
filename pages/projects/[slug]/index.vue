@@ -10,35 +10,36 @@
 </template>
 
 <script setup>
-import { computed, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
-import { useSeoStore } from '@/stores/siteSeo.js';
+import { computed, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
+import { useSeoStore } from '@/stores/siteSeo.js'
 
-import projectBySlug from '@/api/queries/projectBySlug';
-import siteFooter from '@/api/queries/siteFooter';
-const route = useRoute();
-const { data: projectSingleData, pending: projectSinglePending, error: projectSingleError } = await useLazyAsyncQuery(projectBySlug, { slug: route.params.slug });
-const { data: siteFooterData, pending: siteFooterPending, error: siteFooterError } = await useLazyAsyncQuery(siteFooter);
+import projectBySlug from '@/api/queries/projectBySlug'
+import siteFooter from '@/api/queries/siteFooter'
+const route = useRoute()
+const { data: projectSingleData, pending: projectSinglePending, error: projectSingleError } = await useLazyAsyncQuery(projectBySlug, { slug: route.params.slug })
+const { data: siteFooterData, pending: siteFooterPending, error: siteFooterError } = await useLazyAsyncQuery(siteFooter)
 const isProjectVideo = computed(() => {
-    return projectSingleData.value && projectSingleData.value.project && projectSingleData.value.project.projectVideo !== null;
-});
+    return projectSingleData.value && projectSingleData.value.project && projectSingleData.value.project.projectVideo !== null
+})
 
 const seoStore = useSeoStore();
-if (seoStore.pending) {
-    await seoStore.fetchSeoData(route.params.slug);
-}
+// if (seoStore.pending) {
+//     await seoStore.fetchSeoData(route.params.slug)
+// }
+
 watchEffect(() => {
     if (seoStore.seoData && projectSingleData.value) {
-        const projectSeoData = projectSingleData.value.project.seoMetadata;
-
+        const projectSeoData = seoStore.seoData.allProjects.find(project => project.id === projectSingleData.value.project.id).seoMetadata
+        console.log(projectSeoData)
         useSeoMeta({
             title: projectSeoData.title,
             ogTitle: projectSeoData.title,
             description: projectSeoData.description,
             ogDescription: projectSeoData.description,
-            ogImage: projectSeoData.image?.url,
-            twitterCard: projectSeoData.twitterCard
-        });
+            twitterCard: projectSeoData.twitterCard,
+            ogImage: projectSeoData.image.url
+        })
     }
-});
+})
 </script>

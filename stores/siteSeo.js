@@ -11,7 +11,7 @@ export const useSeoStore = defineStore("seo", {
     async fetchSeoData(slug) {
       try {
         const { data: siteSeoData } = await useLazyAsyncQuery(siteSeo, {
-          slug,
+          slug: slug,
         });
         this.seoData = siteSeoData.value;
         this.pending = false;
