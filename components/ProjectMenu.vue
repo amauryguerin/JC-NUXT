@@ -1,5 +1,5 @@
 <template>
-    <Carousel :autoplay="0" wrapAround pauseAutoplayOnHover>
+    <Carousel :autoplay="5000" wrapAround pauseAutoplayOnHover>
         <Slide v-for="project in projectMenuData.allProjects" :key="project.id">
             <nuxt-link :to="{ path: '/projects/' + project.projectSlug }">
                 <NuxtImg :src="project.projectThumbnail.url" :alt="project.projectThumbnail.alt"
