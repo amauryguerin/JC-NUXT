@@ -6,6 +6,9 @@
                 <h2>{{ project.projectTitle }}</h2>
             </nuxt-link>
         </Slide>
+        <template #addons>
+            <navigation />
+        </template>
     </Carousel>
 </template>
 

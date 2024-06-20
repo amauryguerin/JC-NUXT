@@ -31,7 +31,6 @@ const seoStore = useSeoStore();
 watchEffect(() => {
     if (seoStore.seoData && projectSingleData.value) {
         const projectSeoData = seoStore.seoData.allProjects.find(project => project.id === projectSingleData.value.project.id).seoMetadata
-        console.log(projectSeoData)
         useSeoMeta({
             title: projectSeoData.title,
             ogTitle: projectSeoData.title,
