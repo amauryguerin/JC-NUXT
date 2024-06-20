@@ -16,6 +16,9 @@ import { useSeoStore } from '@/stores/siteSeo.js'
 
 import projectBySlug from '@/api/queries/projectBySlug'
 import siteFooter from '@/api/queries/siteFooter'
+
+import { useSiteLayoutStore } from '@/stores/siteLayout.js';
+
 const route = useRoute()
 const { data: projectSingleData, pending: projectSinglePending, error: projectSingleError } = await useLazyAsyncQuery(projectBySlug, { slug: route.params.slug })
 const { data: siteFooterData, pending: siteFooterPending, error: siteFooterError } = await useLazyAsyncQuery(siteFooter)
@@ -24,10 +27,6 @@ const isProjectVideo = computed(() => {
 })
 
 const seoStore = useSeoStore();
-// if (seoStore.pending) {
-//     await seoStore.fetchSeoData(route.params.slug)
-// }
-
 watchEffect(() => {
     if (seoStore.seoData && projectSingleData.value) {
         const projectSeoData = seoStore.seoData.allProjects.find(project => project.id === projectSingleData.value.project.id).seoMetadata
@@ -41,4 +40,11 @@ watchEffect(() => {
         })
     }
 })
+
+const siteLayoutStore = useSiteLayoutStore()
+onMounted(() => {
+    console.log('Header height:', siteLayoutStore.headerHeight)
+});
 </script>
+
+<style lang="scss"></style>

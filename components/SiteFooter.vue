@@ -26,3 +26,17 @@ const filteredFooterMenu = computed(() => {
     });
 });
 </script>
+
+<style lang="scss" scoped>
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    li {
+        a {
+            font-size: 1.5rem;
+        }
+    }
+}
+</style>
