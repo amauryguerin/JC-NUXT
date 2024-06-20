@@ -1,7 +1,7 @@
 <template>
-    <Carousel :autoplay="4000" wrapAround pauseAutoplayOnHover snapAlign="center" :style="{ height: availableHeight }">
+    <Carousel :autoplay="0" :itemsToShow="1.25" wrapAround pauseAutoplayOnHover snapAlign="center">
         <Slide v-for="projectPhoto in projectSingleData.project.projectPhoto" :key="projectPhoto.id">
-            <NuxtImg :src="projectPhoto.url" :alt="projectPhoto.alt" />
+            <NuxtImg :src="projectPhoto.url" :alt="projectPhoto.alt" :style="{ height: availableHeight }" />
         </Slide>
         <template #addons>
             <navigation />
@@ -13,4 +13,11 @@
 const props = defineProps(['projectSingleData', 'projectSinglePending', 'projectSingleError', 'availableHeight']);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.carousel {
+    img {
+        max-width: 90vw;
+        object-fit: contain;
+    }
+}
+</style>
