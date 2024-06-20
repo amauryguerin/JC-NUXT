@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer ref="footerRef">
         <ul>
             <li v-for="link in filteredFooterMenu" :key="link.linkUrl">
                 <nuxt-link :to="{ path: buildLinkPath(link.linkUrl) }">{{ link.linkTitle }}</nuxt-link>
@@ -9,7 +9,8 @@
 </template>
   
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useSiteLayoutStore } from '@/stores/siteLayout.js';
 
 const props = defineProps(['siteFooterData', 'siteFooterPending', 'siteFooterError', 'isProjectVideo', 'routerPath']);
 
@@ -25,6 +26,13 @@ const filteredFooterMenu = computed(() => {
         return true;
     });
 });
+
+const siteLayoutStore = useSiteLayoutStore();
+const footerRef = ref(null);
+onMounted(() => {
+    siteLayoutStore.setFooterHeight(footerRef.value.offsetHeight);
+});
+
 </script>
 
 <style lang="scss" scoped>

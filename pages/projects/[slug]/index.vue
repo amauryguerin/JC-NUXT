@@ -1,16 +1,16 @@
 <template>
     <div v-if="!projectSinglePending">
-        <h2>{{ projectSingleData.project.projectTitle }}</h2>
+        <h2 ref="projectTitleRef">{{ projectSingleData.project.projectTitle }}</h2>
         <ProjectCarousel :projectSingleData="projectSingleData" :projectSinglePending="projectSinglePending"
-            :projectSingleError="projectSingleError" />
+            :projectSingleError="projectSingleError" :availableHeight="availableHeight" />
     </div>
-    <SiteFooter v-if="!siteFooterPending" :siteFooterData="siteFooterData" :siteFooterPending="siteFooterPending"
-        :siteFooterError="siteFooterError" :isProjectVideo="isProjectVideo"
+    <SiteFooter ref="projectFooterRef" v-if="!siteFooterPending" :siteFooterData="siteFooterData"
+        :siteFooterPending="siteFooterPending" :siteFooterError="siteFooterError" :isProjectVideo="isProjectVideo"
         :routerPath="`/projects/${route.params.slug}`" />
 </template>
 
 <script setup>
-import { computed, watchEffect } from 'vue'
+import { computed, watchEffect, onMounted, ref, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSeoStore } from '@/stores/siteSeo.js'
 
@@ -42,8 +42,15 @@ watchEffect(() => {
 })
 
 const siteLayoutStore = useSiteLayoutStore()
-onMounted(() => {
-    console.log('Header height:', siteLayoutStore.headerHeight)
+const projectTitleRef = ref(null)
+const availableHeight = ref(0)
+
+onMounted(async () => {
+    await nextTick()
+    const headerHeight = siteLayoutStore.headerHeight
+    const footerHeight = siteLayoutStore.footerHeight
+    const projectTitleHeight = projectTitleRef.value ? projectTitleRef.value.offsetHeight : 0
+    availableHeight.value = `calc(100vh - ${headerHeight}px - ${footerHeight}px - ${projectTitleHeight}px)`
 });
 </script>
 
