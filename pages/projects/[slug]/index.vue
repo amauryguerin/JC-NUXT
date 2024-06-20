@@ -54,4 +54,8 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+h2 {
+    text-align: center;
+}
+</style>
