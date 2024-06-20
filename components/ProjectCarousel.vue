@@ -1,5 +1,5 @@
 <template>
-    <Carousel :autoplay="0" :itemsToShow="1.25" wrapAround pauseAutoplayOnHover snapAlign="center">
+    <Carousel :autoplay="5000" :itemsToShow="1.25" wrapAround pauseAutoplayOnHover snapAlign="center">
         <Slide v-for="projectPhoto in projectSingleData.project.projectPhoto" :key="projectPhoto.id">
             <NuxtImg :src="projectPhoto.url" :alt="projectPhoto.alt" :style="{ height: availableHeight }" />
         </Slide>
